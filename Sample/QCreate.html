@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body,
+        div.background {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100%;
+            background: lightblue;
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+        }
+
+        .centering-box{
+            margin: auto;
+        }
+
+        .glass {
+            width: 100%;
+            max-width: 90%;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 0 8px gray;
+            border-radius: 15px;
+            margin: auto;
+            margin-top: 2%;
+        }
+
+        .glass h1 {
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            letter-spacing: 0.06em;
+        }
+
+        .glass h2 {
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            letter-spacing: 0.06em;
+        }
+
+        .glass p {
+            margin-top: 20px;
+            font-size: 35px;
+        }
+
+        .margin-bottom{
+            margin-bottom: 30px;
+        }
+
+        .maintext{
+            resize: none;
+            width: 100%;
+            height: 80vh;
+        }
+
+        .form-chain{
+            background: white;
+        }
+
+        .centering-text{
+            text-align: center;
+        }
+
+        .width-90{
+            width: 90%;
+        }
+
+        .selector{
+            text-decoration: none;
+            color: black;
+        }
+
+        .select{
+            border-radius: 30px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .selector:hover{
+            text-decoration: none;
+            color: black;
+        }
+
+        .select:hover{
+            cursor: pointer;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <div class="centering-box">
+            <div class="glass">
+                <h1>問題文作成</h1>
+                <hr>
+                <div class="form" id="form">
+                    <p>タイトル</p>
+                    <input type="text" name="text" class="form-control margin-bottom" placeholder="例）問題1"></input>
+                    <p>タグ</p>
+                    <input type="text" name="text" class="form-control margin-bottom" placeholder="例）PHP 基本情報 G検定 AWS Java"></input>
+                    <p>本文</p>
+                    <a href="#">書き方のヒント（別タブが開きます。）</a><br><br>
+                    <button type="button" class="btn btn-warning margin-bottom">From PNG To SVG Converting</button>
+                    <button type="button" class="btn btn-primary margin-bottom">マークダウンチェック</button>
+                    <textarea class="form-control maintext" placeholder="ここに問題文を書いてください。大問内に副題がある場合は1問目にのみ主題を含めて記述し、2問目以降は副題のみ記述してください。また、マークダウンが使用できます。"></textarea>
+                    <p>問題タイプ</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            選択問題
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            記述問題
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
