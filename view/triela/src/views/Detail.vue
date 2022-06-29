@@ -9,7 +9,7 @@
   <p>制限時間(時間：分：秒)</p>
   <input type="time" step="1" class="form-control centering-text margin-bottom" value="01:00:00">
   <div class="righting-text">
-    <button type="button" class="btn btn-primary">確認と作成</button>
+    <button type="button" class="btn btn-primary" v-on:click="next">確認と作成</button>
   </div>
 </template>
 
@@ -20,6 +20,11 @@ export default {
   name: "DetailVue",
   components: {
     QuestionWizard
+  },
+  methods: {
+    next() {
+      this.$router.push('/exwizard/check')
+    }
   }
 }
 </script>

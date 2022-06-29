@@ -2,8 +2,10 @@
   <div class="bg">
     <div class="centering-box">
       <div class="glass">
-        <transition name="router-transition" :enter-active-class="animate__zoomOutRight" :leave-active-class="animate__slideOutLeft">
-          <router-view/>
+        <transition name="slide">
+          <div>
+            <router-view></router-view>
+          </div>
         </transition>
       </div>
     </div>
@@ -117,5 +119,14 @@ export default {
 
   .righting-text{
     text-align: right;
+  }
+
+  .right-enter-active, .right-leave-active {
+    transform: translate(0px, 0px);
+    transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  }
+
+  .right-enter, .right-leave-to {
+    transform: translateX(100vw) translateX(0px);
   }
 </style>

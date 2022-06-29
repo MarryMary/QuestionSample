@@ -2,7 +2,7 @@
   <div class="righting-text">
     <button type="button" class="btn btn-danger">ウィザードの終了</button>
   </div>
-  <h1>問題作成ウィザード</h1>
+  <h1>エクササイズ作成ウィザード</h1>
   <p>{{ CardMessage }}</p>
   <hr>
 </template>

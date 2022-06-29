@@ -27,7 +27,7 @@ export default{
   },
   methods: {
     next(){
-      this.$router.push('/qwizard/detail')
+      this.$router.push('/exwizard/detail')
     }
   }
 }
