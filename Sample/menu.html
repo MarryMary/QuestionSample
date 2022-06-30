@@ -4,149 +4,138 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample</title>
+    <title>Triela | 問題管理画面</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap');
-
-        * {
-            padding: 0;
+        *{
             margin: 0;
-            box-sizing: border-box;
+            padding: 0;
         }
 
-        html,
-        body,
-        div.background {
-            height: 100%;
+        .sidebar{
+            box-shadow: 5px 0 3px lightgray;
+            width: 25vh;
+            height: 100vh;
+            float: left;
+            margin-right: 10px;
         }
 
-        body {
-            min-height: 100%;
-            background: lightblue;
-            font-family: 'Zen Kaku Gothic New', sans-serif;
+        .user-data{
+            padding: 5%;
+            display: flex;
         }
 
-        .centering-box{
+        .user-data img{
+            margin-right: 5%;
+        }
+
+        .flex-vertical{
+            display:flex;
+            flex-direction: column;
+        }
+
+        .selecter{
+            width: 80%;
             margin: auto;
-        }
-
-        .glass {
-            width: 100%;
-            max-width: 90%;
-            padding: 30px;
-            background-color: white;
-            box-shadow: 0 0 8px gray;
-            border-radius: 15px;
-            margin: auto;
-            margin-top: 2%;
-        }
-
-        .glass h1 {
-            text-align: center;
-            font-size: 50px;
-            font-weight: bold;
-            letter-spacing: 0.06em;
-        }
-
-        .glass h2 {
-            text-align: center;
-            font-size: 40px;
-            font-weight: bold;
-            letter-spacing: 0.06em;
-        }
-
-        .glass p {
-            margin-top: 20px;
-            font-size: 20px;
-        }
-
-        .margin-bottom{
-            margin-bottom: 30px;
-        }
-
-        .maintext{
-            resize: none;
-            width: 100%;
-            height: 80vh;
-        }
-
-        .form-chain{
-            background: white;
-        }
-
-        .centering-text{
+            padding-top: 5%;
             text-align: center;
         }
 
-        .width-90{
-            width: 90%;
+        .selecter ul{
+            list-style: none;
+            border: 1px solid lightgray;
+            margin: 0;
+            padding: 0;
         }
 
-        .selector{
-            text-decoration: none;
-            color: black;
-        }
-
-        .select{
-            border-radius: 30px;
-            border: 1px solid black;
+        .selecter li{
+            border-bottom: 1px lightgray;
             padding: 10px;
         }
 
-        .selector:hover{
-            text-decoration: none;
-            color: black;
+        .selecter li:hover{
+            opacity: 0.5;
+            cursor: pointer;
         }
 
-        .select:hover{
-            cursor: pointer;
-            opacity: 0.5;
+        ul hr{
+            margin: 0;
+        }
+        
+        .content{
+            padding: 10px;
+        }
+
+        .left-text{
+            text-align: left;
+        }
+
+        .right-text{
+            text-align: right;
+        }
+        
+        .center-text{
+            text-align: center;
+        }
+
+        .content{
+            margin-left: 25vh
+        }
+
+        .wizard{
+            width: 80%;
+            margin: auto;
+            padding: 2%;
+            box-shadow: 0 0 8px gray;
         }
     </style>
 </head>
 <body>
-    <div class="bg">
-        <div class="centering-box">
-            <div class="glass">
-                <h1>問題管理ページ</h1>
+    <div class="sidebar">
+        <div class="user-data">
+            <img src="https://avatars.githubusercontent.com/u/92404990?v=4" width="50" height="50" alt="profile">
+            <div class="flex-vertical">
+                <h3>田中琴葉</h3>
+                <p>学生</p>
+                <a href="#">ログアウト</a>
+            </div>
+        </div>
+        <hr>
+        <div class="selecter">
+            <ul>
+                <li><i class="fa-solid fa-house"></i>ホーム</li>
                 <hr>
-                <h2>基本情報</h2>
+                <li><i class="fa-solid fa-folder"></i>テスト管理</li>
                 <hr>
-                <p>タイトル：応用技術者認定試験 2018 秋</p>
-                <p>問題種別：資格試験・過去問題</p>
-                <p>年度：2018</p>
-                <p>備考：秋開催・午前</p>
-                <p>タグ：応用技術者　応用情報　資格　過去問題　2018年</p>
-                <p>問題管理番号：1</p>
-                <h2>問題</h2>
+                <li><i class="fa-solid fa-pen"></i>問題管理</li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="wizard">
+            <div class="center-text">
+                <h3>エクササイズ作成ウィザード</h3>
+                <p>どちらの方法で問題を作成しますか？</p>
                 <hr>
-                <div class="centering-text">
-                    <button type="button" class="btn btn-primary width-90 margin-bottom">問題の追加</button>
-                </div>
-                <a href="#" class="selector">
-                    <div class="select">
-                        <p>問題1</p>
-                        <small>タグ：Go言語 アルゴリズム 記法 パフォーマンス チューニング</small>
-                    </div>
-                </a>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    問題のインポート（JSONフォーマットファイルのアップロード）
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    インタラクティブ（対話型）
+                </label>
+            </div>
+            <div class="right-text">
+                <button type="button" class="btn btn-primary">確認して次へ</button>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
-
-<!--
-メモ
-
-    let radio_btns = document.querySelectorAll(`input[type='radio'][name='type']`);
-
-for (let target of radio_btns) {
-  target.addEventListener(`change`, function () {
-    if(target.checked && target.value !== 'select') {
-      document.getElementById("choice").style.display = "none";
-    }
-  });
-}
--->

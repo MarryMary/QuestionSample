@@ -8,7 +8,7 @@ import (
 )
 
 func ConnectDB() *sql.DB {
-	db, err := sql.Open("mysql", "root@tcp(localhost:8889)/DEVAPP")
+	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/DEVAPP")
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -1,33 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import NotFound from '../views/NotFound'
-
 
 const routes = [
   {
-    path: '/exwizard/start',
-    name: 'create',
-    component: () => import('../views/WhichMode.vue')
+    path: '/',
+    name: 'MainMenu',
+    component: () => import('../views/Menu.vue')
   },
   {
-    path: '/exwizard/detail',
-    name: 'DetailVue',
-    component: () => import('../views/Detail.vue')
+    path: '/wizard/Ex',
+    name: 'ExerciseWizard',
+    component: () => import('../views/ExCreate.vue')
   },
   {
-    path: '/exwizard/check',
-    name: 'CheckDetail',
-    component: () => import('../views/Check.vue')
-  },
-  {
-    path: '/exwizard/SuccessFinished',
-    name: 'Finished',
-    component: () => import('../views/SuccessFinished.vue')
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    component: NotFound
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: () => import('../views/NotFound.vue')
   }
-
 ]
 
 const router = createRouter({

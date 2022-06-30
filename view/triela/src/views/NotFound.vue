@@ -1,16 +1,12 @@
 <template>
-  <h1>Something went wrong!</h1>
-  <h2>404 NOT FOUND</h2>
-  <hr>
-  <div class="centering-text">
-    <p>このURLには何も存在しません。<br>
-      URLをチェックしてやり直してください。
-    </p>
-    <router-link to="/exwizard/start">問題作成ウィザードの開始</router-link>
-  </div>
+  <h1>Oops!</h1>
+  <h3>ご指定のURLにはコンテンツが存在しません。URLの指定が誤っていないかご確認下さい。</h3>
 </template>
 
 <script>
+export default {
+  name: "NotFound"
+}
 </script>
 
 <style scoped>
