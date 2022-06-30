@@ -7,6 +7,16 @@ const routes = [
     component: () => import('../views/Menu.vue')
   },
   {
+    path: '/manage/Ex',
+    name: 'ExerciseManage',
+    component: () => import('../views/ExerciseManagement.vue')
+  },
+  {
+    path: '/manage/fix/:id',
+    name: 'ExerciseFix',
+    component: () => import('../views/ExerciseFix')
+  },
+  {
     path: '/wizard/Ex',
     name: 'ExerciseWizard',
     component: () => import('../views/ExCreate.vue')

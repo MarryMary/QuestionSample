@@ -11,11 +11,13 @@
     <hr>
     <div class="selecter">
       <ul>
-        <li><font-awesome-icon icon="home"/>ホーム</li>
+        <router-link to="/">
+          <li><font-awesome-icon icon="home"/>ホーム</li>
+        </router-link>
         <hr>
-        <li><font-awesome-icon icon="book"/>テスト管理</li>
-        <hr>
-        <li><font-awesome-icon icon="pen"/>問題管理</li>
+        <router-link to="/manage/Ex">
+          <li><font-awesome-icon icon="book"/>テスト管理</li>
+        </router-link>
       </ul>
     </div>
   </div>
@@ -36,6 +38,10 @@
   height: 100vh;
   float: left;
   margin-right: 10px;
+}
+
+.width-90{
+  width: 90%;
 }
 
 .user-data{
@@ -74,6 +80,11 @@
 .selecter li{
   border-bottom: 1px lightgray;
   padding: 10px;
+}
+
+.selecter a{
+  text-decoration: none;
+  color: black;
 }
 
 .selecter li:hover{
@@ -123,5 +134,17 @@ ul hr{
 
 .float-left{
   float: left;
+}
+
+.exercise{
+  border: 1px solid lightgray;
+  border-radius: 30px;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.exercise:hover{
+  opacity: 0.5;
+  cursor: pointer;
 }
 </style>

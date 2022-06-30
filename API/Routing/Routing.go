@@ -37,10 +37,6 @@ func CatchRouting() *gin.Engine {
 		MaxAge: 24 * time.Hour,
 	}))
 
-	r.GET("/", func(c *gin.Context) {
-		c.String(200, "Hello,World!")
-	})
-
 	r = GET_Routing(r)
 	r = POST_Routing(r)
 
