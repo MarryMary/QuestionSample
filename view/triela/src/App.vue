@@ -128,6 +128,10 @@ ul hr{
   margin-top: 40px;
 }
 
+.margin-bottom{
+  margin-bottom: 40px;
+}
+
 .float-right{
   float: right;
 }

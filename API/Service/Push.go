@@ -12,6 +12,14 @@ type ExercisePushRequest struct {
 	Limit     string `json:"limit"`
 }
 
+type ExerciseUpdateRequest struct {
+	Id        string `json:"id"`
+	MainTitle string `json:"maintitle"`
+	Detail    string `json:"detail"`
+	Tag       string `json:"tag"`
+	Limit     string `json:"limit"`
+}
+
 func PushExercise(c *gin.Context) {
 	var PushRequest ExercisePushRequest
 	if err := c.ShouldBindJSON(&PushRequest); err != nil {
@@ -34,4 +42,22 @@ func PushExercise(c *gin.Context) {
 	}
 
 	c.JSON(200, response)
+}
+
+func UpdateExercise(c *gin.Context) {
+	var UpdateRequest ExerciseUpdateRequest
+
+	if err := c.ShouldBindJSON(&UpdateRequest); err != nil {
+		response := gin.H{
+			"STATUS":     "FAILED",
+			"ERRCODE":    "0001",
+			"MESSAGE":    "UNEXPECTED SERVER ERR",
+			"DEBUG_DATA": UpdateRequest,
+		}
+
+		c.JSON(500, response)
+		return
+	}
+
+	Model.Ex_Update(UpdateRequest.Id, UpdateRequest.MainTitle, UpdateRequest.Detail, UpdateRequest.Tag, UpdateRequest.Limit)
 }

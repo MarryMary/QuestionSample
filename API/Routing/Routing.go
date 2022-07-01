@@ -10,19 +10,18 @@ func CatchRouting() *gin.Engine {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		// アクセスを許可したいアクセス元
 		AllowOrigins: []string{
 			"http://localhost",
 			"http://localhost:8080",
 			"http://localhost:8081",
 		},
-		// アクセスを許可したいHTTPメソッド(以下の例だとPUTやDELETEはアクセスできません)
+
 		AllowMethods: []string{
 			"POST",
 			"GET",
 			"OPTIONS",
 		},
-		// 許可したいHTTPリクエストヘッダ
+
 		AllowHeaders: []string{
 			"Access-Control-Allow-Credentials",
 			"Access-Control-Allow-Headers",
@@ -31,9 +30,9 @@ func CatchRouting() *gin.Engine {
 			"Accept-Encoding",
 			"Authorization",
 		},
-		// cookieなどの情報を必要とするかどうか
+
 		AllowCredentials: true,
-		// preflightリクエストの結果をキャッシュする時間
+		
 		MaxAge: 24 * time.Hour,
 	}))
 
