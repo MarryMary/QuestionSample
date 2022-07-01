@@ -7,10 +7,12 @@
       <button type="button" class="btn btn-primary width-90" @click="home">エクササイズの新規作成</button>
     </div>
     <div class="exercises" v-for="(exercise, index) in exercises" :key="index">
-        <div class="exercise">
-          <h5>{{ exercise.ExName }}</h5>
-          <p>タグ：{{ exercise.ExTags }}</p>
-        </div>
+        <router-link :to="`/manage/fix/${ exercise.ExId }`">
+          <div class="exercise">
+            <h5>{{ exercise.ExName }}</h5>
+            <p>タグ：{{ exercise.ExTags }}</p>
+          </div>
+        </router-link>
     </div>
   </div>
 </template>
@@ -44,5 +46,8 @@ export default {
 </script>
 
 <style scoped>
-
+a{
+  text-decoration: none;
+  color: black;
+}
 </style>
