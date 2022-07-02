@@ -27,7 +27,7 @@ const routes = [
     component: () => import('../views/ExCreate.vue')
   },
   {
-    path: '/wizard/Q',
+    path: '/wizard/Question',
     name: 'QuestionWizard',
     component: () => import('../views/QCreate.vue')
   },
