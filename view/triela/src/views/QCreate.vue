@@ -43,7 +43,7 @@
           <h3>問題作成ウィザード</h3>
           <p>回答記入時の採点ポイントとなる単語を空白区切りで入力して下さい。</p>
           <hr>
-          <input type="text" class="form-control width-90" v-model="answers.answer" placeholder="例）Map Slice Struct">
+          <input type="text" class="form-control width-90" v-model="dumper.answer" placeholder="例）Map Slice Struct">
           <div class="right-text">
             <button type="button" class="btn btn-primary margin-top" @click="next">次へ</button>
           </div>
