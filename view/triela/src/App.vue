@@ -118,12 +118,16 @@ ul hr{
 }
 
 .wizard{
-  width: 100%;
+  width: 80%;
   margin: auto;
   padding: 2%;
   box-shadow: 0 0 8px gray;
   max-width: 80vh;
   overflow-y: scroll;
+}
+
+.qwizard{
+  width: 90%!important;
 }
 
 .margin-top{

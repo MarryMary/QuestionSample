@@ -10,11 +10,11 @@
           </div>
           <hr>
           <p>タイトル</p>
-          <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.main_title" placeholder="例）問1">
+          <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.main_title" placeholder="例）問1" required="required">
           <p>タグ</p>
-          <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.tag" placeholder="例）Go言語 Map Struct Type Slice">
+          <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.tag" placeholder="例）Go言語 Map Struct Type Slice" required="required">
           <p>本文</p>
-          <textarea class="form-control not-resize" v-model="dumper.main_text" placeholder="マークダウン形式で書いてみましょう！"></textarea>
+          <textarea class="form-control not-resize" v-model="dumper.main_text" placeholder="マークダウン形式で書いてみましょう！" required="required"></textarea>
           <div class="right-text">
             <button type="button" class="btn btn-primary margin-top" @click="next">次へ</button>
           </div>
@@ -43,7 +43,7 @@
           <h3>問題作成ウィザード</h3>
           <p>回答記入時の採点ポイントとなる単語を空白区切りで入力して下さい。</p>
           <hr>
-          <input type="text" class="form-control width-90" v-model="dumper.answer" placeholder="例）Map Slice Struct">
+          <input type="text" class="form-control width-90" v-model="dumper.answer" placeholder="例）Map Slice Struct" required="required">
           <div class="right-text">
             <button type="button" class="btn btn-primary margin-top" @click="next">次へ</button>
           </div>
@@ -53,7 +53,7 @@
           <p>選択肢を入力して下さい。</p>
           <hr>
           <div v-for="(answers, index) in select" :key="index" class="box-centering">
-            <input type="text" class="form-control width-90" v-model="answers.answer" placeholder="例）ア:Type Sample Struct">
+            <input type="text" class="form-control width-90" v-model="answers.answer" placeholder="例）ア:Type Sample Struct" required="required">
           </div>
           <div class="center-text">
             <button type="button" class="btn btn-success width-90 margin-top" @click="addAnswer">回答の追加</button>
@@ -68,7 +68,7 @@
           <hr>
           <div v-for="(exanswer, index) in select" :key="index">
             <div class="form-check">
-              <input class="form-check-input" type="radio" v-model="dumper.answer" name="answer" id="select" value="select">
+              <input class="form-check-input" type="radio" v-model="dumper.answer" name="answer" id="select" value="select" required="required">
               <label class="form-check-label" for="select">
                 {{exanswer.answer}}
               </label>
@@ -82,7 +82,7 @@
           <h3>問題作成ウィザード</h3>
           <p>この問題の配点を整数で入力して下さい。(小数は採点時に無視されます。)</p>
           <hr>
-          <input type="text" class="form-control width-90" v-model="dumper.score" placeholder="例）10">
+          <input type="text" class="form-control width-90" v-model="dumper.score" placeholder="例）10" required="required">
           <div class="right-text">
             <button type="button" class="btn btn-primary margin-top" @click="next">次へ</button>
           </div>
