@@ -7,7 +7,7 @@
       <button type="button" class="btn btn-primary width-90" @click="home">エクササイズの新規作成</button>
     </div>
     <div class="exercises" v-for="(exercise, index) in exercises" :key="index">
-        <router-link :to="`/manage/fix/${ exercise.ExId }`">
+        <router-link :to="`/detail/Ex/${ exercise.ExId }`">
           <div class="exercise">
             <h5>{{ exercise.ExName }}</h5>
             <p>タグ：{{ exercise.ExTags }}</p>

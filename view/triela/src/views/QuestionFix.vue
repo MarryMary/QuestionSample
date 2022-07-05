@@ -163,7 +163,7 @@
   </div>
 </template>
 
-<script type="module">
+<script>
 import axios from "axios"
 import { marked } from 'marked'
 
@@ -191,7 +191,7 @@ export default {
       }
     }
   },
-  name: "QCreate",
+  name: "QuestionFix",
   methods: {
     ValidSettings(){
       if(this.dumper.main_title.trim() !== "" && this.dumper.tag.trim() !== "" && this.dumper.main_text.trim() !== ""){
@@ -367,36 +367,5 @@ export default {
 </script>
 
 <style scoped>
-.v-enter-to {
-  transition: transform 0.1s;
-  transform: translateX(0px);
-}
-.v-enter-from {
-  transform: translateX(50px);
-}
 
-.v-leave-to {
-  transition: transform 0.01s;
-  transform: translateX(-50px);
-}
-.v-leave-from {
-  transform: translateX(0px);
-}
-
-.not-resize{
-  resize: none;
-  height: 40vh;
-  max-height: 40vh;
-  overflow-y: scroll;
-}
-
-a{
-  text-decoration: underline!important;
-  color: blue!important;
-}
-
-a:hover{
-  opacity: 0.5;
-  cursor: pointer;
-}
 </style>

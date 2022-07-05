@@ -40,6 +40,15 @@
               <button type="button" class="btn btn-success margin-top" @click="sendEnter">作成する</button>
             </div>
           </div>
+          <div v-else-if="page === 3">
+            <h3>エクササイズ作成ウィザード</h3>
+            <p>全て完了しました！</p>
+            <hr>
+            <p>エクササイズが追加されました。</p>
+            <div class="text-center">
+              <button type="button" class="btn btn-primary width-90" @click="toExManage">戻る</button>
+            </div>
+          </div>
           <div v-else>
             <h3>Oops!</h3>
             <p>問題が発生しました。やり直して下さい。</p>
@@ -103,12 +112,20 @@ export default {
           }
       ).then(
           function(response){
-            console.log(response)
-          }
+            if(response.status === 200){
+              this.err = false
+              this.next()
+            }else{
+              alert("サーバーで問題が発生しました。再度お試し下さい。")
+            }
+          }.bind(this)
       ).catch(
           error => console.log(error)
       )
+    },
 
+    toExManage() {
+      this.$router.push(`/manage/Ex`)
     }
   }
 }

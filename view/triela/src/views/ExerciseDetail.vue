@@ -1,14 +1,14 @@
 <template>
   <div class="wizard">
-    <h1>{{ main_title }}</h1>
+    <h1>名称：{{ main_title }}</h1>
     <p>エクササイズ情報の編集や、問題の作成ができます。</p>
     <hr>
     <h2>情報</h2>
     <hr>
     <div class="text-center">
-      <h3>説明：{{ detail }}</h3>
-      <h3>タグ：{{ tag }}</h3>
-      <h3>制限時間：{{time_limit}}</h3>
+      <p>説明：<br>{{ detail }}</p>
+      <p>タグ：<br>{{ tag }}</p>
+      <p>制限時間：<br>{{time_limit}}</p>
     </div>
     <div class="text-center margin-bottom">
       <button type="button" class="btn btn-primary width-90" @click="home">エクササイズの情報修正</button>
@@ -16,7 +16,15 @@
     <h2>問題</h2>
     <hr>
     <div class="text-center">
-      <button type="button" class="btn btn-success width-90" @click="home">問題の追加</button>
+      <button type="button" class="btn btn-success width-90" @click="addQuestion">問題の追加</button>
+    </div>
+    <div class="exercises" v-for="(question, index) in questions" :key="index">
+      <router-link :to="`/detail/Q/${ question.QId }`">
+        <div class="exercise">
+          <h5>{{ question.QName }}</h5>
+          <p>タグ：{{ question.QTags }}</p>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -32,7 +40,13 @@ export default {
       main_title: '',
       detail: '',
       tag: '',
-      time_limit: '01:00:00'
+      time_limit: '01:00:00',
+      questions: null
+    }
+  },
+  methods: {
+    addQuestion(){
+      this.$router.push(`/wizard/Question/${ this.$route.params.id }`)
     }
   },
   mounted: function() {
@@ -53,10 +67,27 @@ export default {
     ).catch(
         error => console.log(error)
     )
+
+    axios.get(
+        'http://localhost:8080/GetAllQuestion',
+    ).then(
+        function(response){
+          this.questions = response.data.DATA
+        }.bind(this)
+    ).catch(
+        error => console.log(error)
+    )
   }
 }
 </script>
 
 <style scoped>
+a{
+  text-decoration: none;
+  color: black;
+}
 
+p{
+  font-size: 20px;
+}
 </style>

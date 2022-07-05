@@ -3,7 +3,7 @@
     <div class="user-data">
       <img src="https://avatars.githubusercontent.com/u/92404990?v=4" width="50" height="50" alt="profile">
       <div class="flex-vertical">
-        <h3>田中琴葉</h3>
+        <h3>大原みちる</h3>
         <p>学生</p>
         <a href="#">ログアウト</a>
       </div>
@@ -18,6 +18,10 @@
         <router-link to="/manage/Ex">
           <li><font-awesome-icon icon="book"/>テスト管理</li>
         </router-link>
+        <hr>
+        <li><font-awesome-icon icon="fa-solid fa-people-group" />共同管理問題</li>
+        <hr>
+        <li><font-awesome-icon icon="fa-solid fa-at" />修正依頼</li>
       </ul>
     </div>
   </div>
@@ -30,6 +34,10 @@
 *{
   margin: 0;
   padding: 0;
+}
+
+.border{
+  border: 1px solid lightgray;
 }
 
 .sidebar{
@@ -68,6 +76,10 @@
 .box-centering{
   width: 70%;
   margin: auto;
+}
+
+.text-left{
+  text-align: left;
 }
 
 .selecter ul{
@@ -118,16 +130,12 @@ ul hr{
 }
 
 .wizard{
-  width: 80%;
+  width: 90%;
   margin: auto;
   padding: 2%;
   box-shadow: 0 0 8px gray;
-  max-width: 80vh;
+  max-height: 95vh;
   overflow-y: scroll;
-}
-
-.qwizard{
-  width: 90%!important;
 }
 
 .margin-top{

@@ -41,10 +41,12 @@ IncExId -- この問題が属するエクササイズの管理番号
 type Question struct {
 	QId        int
 	QName      string
+	QTags      string
 	QMain      string
-	QType      int
 	AnswerArea string
 	QAnswer    string
+	QChoice    string
+	QScore     int
 	IncExId    int
 }
 

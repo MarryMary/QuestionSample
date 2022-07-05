@@ -5,11 +5,17 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueMathjax from 'vue-mathjax-next'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 
 library.add(fas, far, fab)
 
-createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(store).use(router).mount('#app')
+var app = createApp(App)
+app.component('font-awesome-icon', FontAwesomeIcon)
+app.use(VueMathjax)
+app.use(store)
+app.use(router)
+app.mount('#app')
 

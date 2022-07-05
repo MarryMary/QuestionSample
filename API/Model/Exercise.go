@@ -4,7 +4,7 @@ import (
 	"triela/Structs"
 )
 
-func Ex_Push(ExName string, ExDetail string, ExTags string, ExTimeUp string) {
+func Ex_Push(ExName string, ExDetail string, ExTags string, ExTimeUp string) bool {
 	db := ConnectDB()
 	stmt, err := db.Prepare("INSERT INTO Exercise(ExName, ExDetail, ExTags, ExTimeUp) VALUES (?, ?, ?, ?)")
 	if err != nil {
@@ -15,6 +15,8 @@ func Ex_Push(ExName string, ExDetail string, ExTags string, ExTimeUp string) {
 	if err != nil {
 		panic(err)
 	}
+
+	return false
 }
 
 func Ex_GetAll() []Structs.Exercise {
@@ -76,7 +78,7 @@ func Ex_Find(ExeId *string) Structs.Exercise {
 	return Exercise
 }
 
-func Ex_Update(ExId string, ExName string, ExDetail string, ExTags string, ExTimeUp string) {
+func Ex_Update(ExId string, ExName string, ExDetail string, ExTags string, ExTimeUp string) bool {
 	db := ConnectDB()
 	stmt, err := db.Prepare("UPDATE Exercise SET ExName = ?, ExDetail = ?, ExTags = ?, ExTimeUp = ? WHERE (ExId = ?)")
 
@@ -89,4 +91,6 @@ func Ex_Update(ExId string, ExName string, ExDetail string, ExTags string, ExTim
 	if err != nil {
 		panic(err)
 	}
+
+	return false
 }

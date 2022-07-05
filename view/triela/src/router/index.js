@@ -12,9 +12,19 @@ const routes = [
     component: () => import('../views/ExerciseManagement.vue')
   },
   {
-    path: '/detail/ex/:id',
+    path: '/detail/Ex/:id',
     name: 'ExerciseDetail',
     component: () => import('../views/ExerciseDetail.vue')
+  },
+  {
+    path: '/detail/Q/:id',
+    name: 'QuestionDetail',
+    component: () => import('../views/QDetail.vue')
+  },
+  {
+    path: '/preview/Q/:id',
+    name: 'QuestionPreview',
+    component: () => import('../views/QuestionTemplate.vue')
   },
   {
     path: '/manage/fix/:id',
