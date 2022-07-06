@@ -22,7 +22,9 @@ ExTimeUp -- エクササイズの制限時間
 type Exercise struct {
 	ExId     int
 	ExName   string
-	ExDetail string
+	ExYear   string
+	ExSeason string
+	ExType   string
 	ExTags   string
 	ExTimeUp string
 }

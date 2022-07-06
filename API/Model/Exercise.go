@@ -4,13 +4,13 @@ import (
 	"triela/Structs"
 )
 
-func Ex_Push(ExName string, ExDetail string, ExTags string, ExTimeUp string) bool {
+func Ex_Push(ExName string, ExYear string, ExSeason string, ExGenre string, ExTags string, ExTimeUp string) bool {
 	db := ConnectDB()
-	stmt, err := db.Prepare("INSERT INTO Exercise(ExName, ExDetail, ExTags, ExTimeUp) VALUES (?, ?, ?, ?)")
+	stmt, err := db.Prepare("INSERT INTO Exercise(ExName, ExYear, ExSeason, ExType, ExTags, ExTimeUp) VALUES (?, ?, ?, ?, ?, ?)")
 	if err != nil {
 		panic(err)
 	}
-	_, err = stmt.Exec(ExName, ExDetail, ExTags, ExTimeUp)
+	_, err = stmt.Exec(ExName, ExYear, ExSeason, ExGenre, ExTags, ExTimeUp)
 
 	if err != nil {
 		panic(err)
@@ -30,16 +30,18 @@ func Ex_GetAll() []Structs.Exercise {
 
 	for stmt.Next() {
 		var ExId int
-		var ExName, ExDetail, ExTags, ExTimeUp string
+		var ExName, ExYear, ExSeason, ExType, ExTags, ExTimeUp string
 
-		if err := stmt.Scan(&ExId, &ExName, &ExDetail, &ExTags, &ExTimeUp); err != nil {
+		if err := stmt.Scan(&ExId, &ExName, &ExYear, &ExSeason, &ExType, &ExTags, &ExTimeUp); err != nil {
 			panic(err)
 		}
 
 		Exercise := Structs.Exercise{
 			ExId:     ExId,
 			ExName:   ExName,
-			ExDetail: ExDetail,
+			ExYear:   ExYear,
+			ExSeason: ExSeason,
+			ExType:   ExType,
 			ExTags:   ExTags,
 			ExTimeUp: ExTimeUp,
 		}
@@ -59,15 +61,17 @@ func Ex_Find(ExeId *string) Structs.Exercise {
 	stmt := db.QueryRow("SELECT * FROM Exercise WHERE ExId = ?", ExeId)
 
 	var ExId int
-	var ExName, ExDetail, ExTags, ExTimeUp string
+	var ExName, ExYear, ExSeason, ExType, ExTags, ExTimeUp string
 
-	if err := stmt.Scan(&ExId, &ExName, &ExDetail, &ExTags, &ExTimeUp); err != nil {
+	if err := stmt.Scan(&ExId, &ExName, &ExYear, &ExSeason, &ExType, &ExTags, &ExTimeUp); err != nil {
 		panic(err)
 	}
 	Exercise := Structs.Exercise{
 		ExId:     ExId,
 		ExName:   ExName,
-		ExDetail: ExDetail,
+		ExYear:   ExYear,
+		ExSeason: ExSeason,
+		ExType:   ExType,
 		ExTags:   ExTags,
 		ExTimeUp: ExTimeUp,
 	}
@@ -78,15 +82,15 @@ func Ex_Find(ExeId *string) Structs.Exercise {
 	return Exercise
 }
 
-func Ex_Update(ExId string, ExName string, ExDetail string, ExTags string, ExTimeUp string) bool {
+func Ex_Update(ExId string, ExName string, ExYear string, ExSeason string, ExType string, ExTags string, ExTimeUp string) bool {
 	db := ConnectDB()
-	stmt, err := db.Prepare("UPDATE Exercise SET ExName = ?, ExDetail = ?, ExTags = ?, ExTimeUp = ? WHERE (ExId = ?)")
+	stmt, err := db.Prepare("UPDATE Exercise SET ExName = ?, ExYear = ?, ExSeason = ?, ExType = ?, ExTags = ?, ExTimeUp = ? WHERE (ExId = ?)")
 
 	if err != nil {
 		panic(err)
 	}
 
-	_, err = stmt.Exec(ExName, ExDetail, ExTags, ExTimeUp, ExId)
+	_, err = stmt.Exec(ExName, ExYear, ExSeason, ExType, ExTags, ExTimeUp, ExId)
 
 	if err != nil {
 		panic(err)

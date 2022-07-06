@@ -7,7 +7,9 @@ import (
 
 type ExercisePushRequest struct {
 	MainTitle string `json:"maintitle"`
-	Detail    string `json:"detail"`
+	Year      string `json:"year"`
+	Season    string `json:"season"`
+	Genre     string `json:"genre"`
 	Tag       string `json:"tag"`
 	Limit     string `json:"limit"`
 }
@@ -56,7 +58,7 @@ func PushExercise(c *gin.Context) {
 		return
 	}
 
-	Model.Ex_Push(PushRequest.MainTitle, PushRequest.Detail, PushRequest.Tag, PushRequest.Limit)
+	Model.Ex_Push(PushRequest.MainTitle, PushRequest.Year, PushRequest.Season, PushRequest.Genre, PushRequest.Tag, PushRequest.Limit)
 
 	response := gin.H{
 		"STATUS":  "SUCCESS",
