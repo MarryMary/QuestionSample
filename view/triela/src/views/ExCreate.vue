@@ -11,8 +11,13 @@
             <hr>
             <p>タイトル</p>
             <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.main_title" placeholder="例）応用技術者認定試験 午前">
-            <p>詳細情報</p>
-            <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.detail" placeholder="例）2018(平成30年)の秋に開催された午前問題です。">
+            <p>年度</p>
+            <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.year" placeholder="オリジナル問題の場合は現在の年度 下2桁">
+            <p>季節</p>
+            <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.season" placeholder="オリジナル問題や季節が存在しない場合は未入力">
+            <p>ジャンル</p>
+            <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.Genre" placeholder="AZ, AP等">
+            <small>命名ルールは<a href="#">こちら</a></small>
             <p>タグ</p>
             <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.tag" placeholder="例）応用技術者 応用 技術者 午前">
             <p>制限時間(時間：分：秒)</p>
@@ -27,8 +32,12 @@
             <hr>
             <p>タイトル</p>
             <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.main_title" disabled>
-            <p>詳細情報</p>
-            <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.detail" disabled>
+            <p>年度</p>
+            <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.year" placeholder="オリジナル問題の場合は現在の年度 下2桁" disabled>
+            <p>季節</p>
+            <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.season" placeholder="オリジナル問題や季節が存在しない場合は未入力" disabled>
+            <p>ジャンル</p>
+            <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.Genre" placeholder="AZ, AP等" disabled>
             <p>タグ</p>
             <input type="text" name="text" class="form-control center-text margin-bottom" v-model="dumper.tag" disabled>
             <p>制限時間(時間：分：秒)</p>
@@ -69,7 +78,9 @@ export default {
       errmsg: '1つまたは複数の入力項目が欠損しています。',
       dumper: {
         main_title: '',
-        detail: '',
+        year: '',
+        season: '',
+        Genre: '',
         tag: '',
         time_limit: '01:00:00'
       }
@@ -103,10 +114,12 @@ export default {
 
     sendEnter(){
       axios.post(
-          'http://localhost:8080/PushExercise',
+          'http://localhost/PushExercise',
           {
             MainTitle: this.dumper.main_title,
-            Detail: this.dumper.detail,
+            Year: this.dumper.year,
+            Season: this.dumper.season,
+            Genre: this.dumper.Genre,
             Tag: this.dumper.tag,
             Limit: this.dumper.time_limit
           }
