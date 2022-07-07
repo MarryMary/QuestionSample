@@ -6,7 +6,8 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     SessionId = request.cookies.get("PHPSESSID")
-    print(SessionId)
+    SessionData = ReadSession(SessionId)
+    return SessionData[b'libname']
     
 
 if __name__ == "__main__":

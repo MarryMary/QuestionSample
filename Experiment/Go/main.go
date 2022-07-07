@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/elliotchance/phpserialize"
 	"github.com/gin-gonic/gin"
@@ -13,8 +14,8 @@ var ctx = context.Background()
 func RedisSample(Key string) map[interface{}]interface{} {
 	rdb := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
-		Password: "", // no password set
-		DB:       0,  // use default DB
+		Password: "",
+		DB:       0,
 	})
 
 	val2, err := rdb.Get(ctx, Key).Result()
@@ -45,7 +46,7 @@ func main() {
 
 		redis_sess_key := "PHPREDIS_SESSION:" + php_sess_id
 
-		RedisSample(redis_sess_key)
+		fmt.Println(RedisSample(redis_sess_key))
 	})
 	engine.Run(":3000")
 }
