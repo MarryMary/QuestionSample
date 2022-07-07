@@ -6,7 +6,9 @@
     <h2>情報</h2>
     <hr>
     <div class="text-center">
-      <p>説明：<br>{{ detail }}</p>
+      <p>年度：<br>{{ year }}</p>
+      <p>時期：<br>{{ season }}</p>
+      <p>問題ジャンル：<br>{{ genre }}</p>
       <p>タグ：<br>{{ tag }}</p>
       <p>制限時間：<br>{{time_limit}}</p>
     </div>
@@ -36,9 +38,10 @@ export default {
   name: "ExerciseDetail.vue",
   data(){
     return {
-      dataid: null,
       main_title: '',
-      detail: '',
+      year: '',
+      season: '',
+      genre: '',
       tag: '',
       time_limit: '01:00:00',
       questions: null
@@ -53,16 +56,18 @@ export default {
     axios.post(
         'http://localhost:8080/FindExercise',
         {
-          ExId: this.$route.params.id
+          ExName: this.$route.params.ExName,
+          ExType: this.$route.params.ExType,
         }
     ).then(
         function(response){
           var exercise = response.data.DATA
           this.main_title = exercise.ExName
-          this.detail = exercise.ExDetail
+          this.year = exercise.ExYear
+          this.season = exercise.ExSeason
+          this.genre = exercise.ExGenre
           this.tag = exercise.ExTags
-          this.time_limit = exercise.ExTimeUp
-          this.dataid = this.$route.params.id
+          this.time_limit = exercise.ExTimeLimit
         }.bind(this)
     ).catch(
         error => console.log(error)

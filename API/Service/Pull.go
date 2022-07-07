@@ -3,15 +3,8 @@ package Service
 import (
 	"github.com/gin-gonic/gin"
 	"triela/Model"
+	"triela/Structs"
 )
-
-type ExerciseFindRequest struct {
-	ExId string `json:"ExId"`
-}
-
-type QuestionFindRequest struct {
-	QId string `json:"QId"`
-}
 
 func PullExercise(c *gin.Context) {
 	res := Model.Ex_GetAll()
@@ -24,7 +17,7 @@ func PullExercise(c *gin.Context) {
 }
 
 func FindExercise(c *gin.Context) {
-	var FindRequest ExerciseFindRequest
+	var FindRequest Structs.ExerciseFindRequest
 
 	if err := c.ShouldBindJSON(&FindRequest); err != nil {
 		response := gin.H{
@@ -58,7 +51,7 @@ func PullQuestion(c *gin.Context) {
 }
 
 func FindQuestion(c *gin.Context) {
-	var FindQuestion QuestionFindRequest
+	var FindQuestion Structs.QuestionFindRequest
 
 	if err := c.ShouldBindJSON(&FindQuestion); err != nil {
 		response := gin.H{

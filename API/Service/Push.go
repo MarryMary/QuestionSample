@@ -3,49 +3,11 @@ package Service
 import (
 	"github.com/gin-gonic/gin"
 	"triela/Model"
+	"triela/Structs"
 )
 
-type ExercisePushRequest struct {
-	MainTitle string `json:"maintitle"`
-	Year      string `json:"year"`
-	Season    string `json:"season"`
-	Genre     string `json:"genre"`
-	Tag       string `json:"tag"`
-	Limit     string `json:"limit"`
-}
-
-type ExerciseUpdateRequest struct {
-	Id        string `json:"id"`
-	MainTitle string `json:"maintitle"`
-	Detail    string `json:"detail"`
-	Tag       string `json:"tag"`
-	Limit     string `json:"limit"`
-}
-
-type QuestionPushRequest struct {
-	MainTitle string `json:"maintitle"`
-	Tag       string `json:"tag"`
-	MainText  string `json:"maintext"`
-	QType     string `json:"qtype"`
-	Answer    string `json:"answer"`
-	Choice    string `json:"choice"`
-	Score     string `json:"score"`
-	IncExId   string `json:"incexid"`
-}
-
-type QuestionUpdateRequest struct {
-	Id        string `json:"id"`
-	MainTitle string `json:"maintitle"`
-	Tag       string `json:"tag"`
-	MainText  string `json:"maintext"`
-	QType     string `json:"qtype"`
-	Answer    string `json:"answer"`
-	Choice    string `json:"choice"`
-	Score     string `json:"score"`
-}
-
 func PushExercise(c *gin.Context) {
-	var PushRequest ExercisePushRequest
+	var PushRequest Structs.ExercisePushRequest
 	if err := c.ShouldBindJSON(&PushRequest); err != nil {
 		response := gin.H{
 			"STATUS":     "FAILED",
@@ -69,7 +31,7 @@ func PushExercise(c *gin.Context) {
 }
 
 func UpdateExercise(c *gin.Context) {
-	var UpdateRequest ExerciseUpdateRequest
+	var UpdateRequest Structs.ExerciseUpdateRequest
 
 	if err := c.ShouldBindJSON(&UpdateRequest); err != nil {
 		response := gin.H{
@@ -83,11 +45,11 @@ func UpdateExercise(c *gin.Context) {
 		return
 	}
 
-	Model.Ex_Update(UpdateRequest.Id, UpdateRequest.MainTitle, UpdateRequest.Detail, UpdateRequest.Tag, UpdateRequest.Limit)
+	Model.Ex_Update(UpdateRequest.OldTitle, UpdateRequest.OldType, UpdateRequest.MainTitle, UpdateRequest.Year, UpdateRequest.Season, UpdateRequest.Type, UpdateRequest.Tag, UpdateRequest.Limit)
 }
 
 func PushQuestion(c *gin.Context) {
-	var PushRequest QuestionPushRequest
+	var PushRequest Structs.QuestionPushRequest
 	if err := c.ShouldBindJSON(&PushRequest); err != nil {
 		response := gin.H{
 			"STATUS":     "FAILED",
@@ -103,7 +65,7 @@ func PushQuestion(c *gin.Context) {
 }
 
 func UpdateQuestion(c *gin.Context) {
-	var UpdateQuestion QuestionUpdateRequest
+	var UpdateQuestion Structs.QuestionUpdateRequest
 
 	if err := c.ShouldBindJSON(&UpdateQuestion); err != nil {
 		response := gin.H{

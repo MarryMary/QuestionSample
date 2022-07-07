@@ -12,7 +12,7 @@ const routes = [
     component: () => import('../views/ExerciseManagement.vue')
   },
   {
-    path: '/detail/Ex/:id',
+    path: '/detail/Ex/:ExName/:ExType',
     name: 'ExerciseDetail',
     component: () => import('../views/ExerciseDetail.vue')
   },
