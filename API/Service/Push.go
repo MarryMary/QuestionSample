@@ -61,7 +61,7 @@ func PushQuestion(c *gin.Context) {
 		c.JSON(500, response)
 		return
 	}
-	Model.Q_Push(PushRequest.MainTitle, PushRequest.Tag, PushRequest.MainText, PushRequest.QType, PushRequest.Answer, PushRequest.Choice, PushRequest.Score, PushRequest.IncExId)
+	Model.Q_Push(PushRequest.ExName, PushRequest.ExType, PushRequest.MainTitle, PushRequest.Tag, PushRequest.MainText, PushRequest.QType, PushRequest.Answer, PushRequest.Choice, PushRequest.Score)
 }
 
 func UpdateQuestion(c *gin.Context) {
@@ -79,5 +79,5 @@ func UpdateQuestion(c *gin.Context) {
 		return
 	}
 
-	Model.Q_Update(UpdateQuestion.Id, UpdateQuestion.MainTitle, UpdateQuestion.Tag, UpdateQuestion.MainText, UpdateQuestion.QType, UpdateQuestion.Answer, UpdateQuestion.Choice, UpdateQuestion.Score)
+	//Model.Q_Update(UpdateQuestion.Id, UpdateQuestion.MainTitle, UpdateQuestion.Tag, UpdateQuestion.MainText, UpdateQuestion.QType, UpdateQuestion.Answer, UpdateQuestion.Choice, UpdateQuestion.Score)
 }

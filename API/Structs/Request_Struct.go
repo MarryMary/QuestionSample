@@ -21,6 +21,8 @@ type ExerciseUpdateRequest struct {
 }
 
 type QuestionPushRequest struct {
+	ExName    string `json:"exname"`
+	ExType    string `json:"extype"`
 	MainTitle string `json:"maintitle"`
 	Tag       string `json:"tag"`
 	MainText  string `json:"maintext"`
@@ -28,7 +30,6 @@ type QuestionPushRequest struct {
 	Answer    string `json:"answer"`
 	Choice    string `json:"choice"`
 	Score     string `json:"score"`
-	IncExId   string `json:"incexid"`
 }
 
 type QuestionUpdateRequest struct {
@@ -43,9 +44,12 @@ type QuestionUpdateRequest struct {
 }
 
 type ExerciseFindRequest struct {
-	ExId string `json:"ExId"`
+	ExName string `json:"exname"`
+	ExType string `json:"extype"`
 }
 
 type QuestionFindRequest struct {
-	QId string `json:"QId"`
+	ExName string `json:"exname"`
+	ExType string `json:"extype"`
+	QName  string `json:"qname"`
 }

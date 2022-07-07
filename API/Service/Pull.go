@@ -31,7 +31,7 @@ func FindExercise(c *gin.Context) {
 		return
 	}
 
-	res := Model.Ex_Find(&FindRequest.ExId)
+	res := Model.Ex_Find(FindRequest.ExName, FindRequest.ExType)
 	json := gin.H{
 		"STATUS": "SUCCESS",
 		"DATA":   res,
@@ -65,7 +65,7 @@ func FindQuestion(c *gin.Context) {
 		return
 	}
 
-	res := Model.Q_Find(&FindQuestion.QId)
+	res := Model.Q_Find(FindQuestion.ExName, FindQuestion.ExType, FindQuestion.QName)
 	json := gin.H{
 		"STATUS": "SUCCESS",
 		"DATA":   res,

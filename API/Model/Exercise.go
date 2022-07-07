@@ -6,7 +6,7 @@ import (
 
 func Ex_Push(ExName string, ExYear string, ExSeason string, ExGenre string, ExTags string, ExTimeUp string) bool {
 	db := ConnectDB()
-	stmt, err := db.Prepare("INSERT INTO Exercise(ExName, ExType,ExYear, ExSeason, ExTags, ExTimeUp) VALUES (?, ?, ?, ?, ?, ?)")
+	stmt, err := db.Prepare("INSERT INTO Exercise(ExName, ExType, ExYear, ExSeason, ExTags, ExTimeUp) VALUES (?, ?, ?, ?, ?, ?)")
 	if err != nil {
 		panic(err)
 	}
@@ -31,7 +31,7 @@ func Ex_GetAll() []Structs.Exercise {
 	for stmt.Next() {
 		var ExName, ExType, ExYear, ExSeason, ExTags, ExTimeLimit string
 
-		if err := stmt.Scan(&ExName, &ExType, &ExYear, &ExSeason, &ExType, &ExTags, &ExTimeLimit); err != nil {
+		if err := stmt.Scan(&ExName, &ExYear, &ExSeason, &ExType, &ExTags, &ExTimeLimit); err != nil {
 			panic(err)
 		}
 
@@ -54,14 +54,13 @@ func Ex_GetAll() []Structs.Exercise {
 	return Exercises
 }
 
-func Ex_Find(ExeId *string) Structs.Exercise {
+func Ex_Find(ExeName string, ExeType string) Structs.Exercise {
 	db := ConnectDB()
-	stmt := db.QueryRow("SELECT * FROM Exercise WHERE ExId = ?", ExeId)
+	stmt := db.QueryRow("SELECT * FROM Exercise WHERE ExName = ? AND ExType = ?", ExeName, ExeType)
 
-	var ExId int
 	var ExName, ExYear, ExSeason, ExType, ExTags, ExTimeLimit string
 
-	if err := stmt.Scan(&ExId, &ExName, &ExYear, &ExSeason, &ExType, &ExTags, &ExTimeLimit); err != nil {
+	if err := stmt.Scan(&ExName, &ExYear, &ExSeason, &ExType, &ExTags, &ExTimeLimit); err != nil {
 		panic(err)
 	}
 	Exercise := Structs.Exercise{

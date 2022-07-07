@@ -13,7 +13,7 @@
       <p>制限時間：<br>{{time_limit}}</p>
     </div>
     <div class="text-center margin-bottom">
-      <button type="button" class="btn btn-primary width-90" @click="home">エクササイズの情報修正</button>
+      <button type="button" class="btn btn-primary width-90" @click="FixExercise">エクササイズの情報修正</button>
     </div>
     <h2>問題</h2>
     <hr>
@@ -21,7 +21,7 @@
       <button type="button" class="btn btn-success width-90" @click="addQuestion">問題の追加</button>
     </div>
     <div class="exercises" v-for="(question, index) in questions" :key="index">
-      <router-link :to="`/detail/Q/${ question.QId }`">
+      <router-link :to="`/detail/Q/${ this.$route.params.ExName }/${ this.$route.params.ExType }/${ question.QName }`">
         <div class="exercise">
           <h5>{{ question.QName }}</h5>
           <p>タグ：{{ question.QTags }}</p>
@@ -49,7 +49,11 @@ export default {
   },
   methods: {
     addQuestion(){
-      this.$router.push(`/wizard/Question/${ this.$route.params.id }`)
+      this.$router.push(`/wizard/Question/${ this.$route.params.ExName }/${ this.$route.params.ExType }`)
+    },
+
+    FixExercise(){
+      this.$router.push(`/manage/fix/Ex/${ this.$route.params.ExName }/${ this.$route.params.ExType }`)
     }
   },
   mounted: function() {
@@ -62,10 +66,11 @@ export default {
     ).then(
         function(response){
           var exercise = response.data.DATA
+          console.log(exercise)
           this.main_title = exercise.ExName
           this.year = exercise.ExYear
           this.season = exercise.ExSeason
-          this.genre = exercise.ExGenre
+          this.genre = exercise.ExType
           this.tag = exercise.ExTags
           this.time_limit = exercise.ExTimeLimit
         }.bind(this)

@@ -89,7 +89,7 @@ export default {
   name: "ExCreate",
   methods: {
     next(){
-      if(this.dumper.main_title.trim() !== '' && this.dumper.detail.trim() !== '' && this.dumper.tag.trim() !== '' && this.dumper.time_limit.trim() !== '') {
+      if(this.dumper.main_title.trim() !== '' && this.dumper.year.trim() !== '' && this.dumper.season.trim() !== '' && this.dumper.Genre.trim() !== '' && this.dumper.tag.trim() !== '' && this.dumper.time_limit.trim() !== '') {
         this.err = false
         this.page++
       }else{
@@ -114,7 +114,7 @@ export default {
 
     sendEnter(){
       axios.post(
-          'http://localhost/PushExercise',
+          'http://localhost:8080/PushExercise',
           {
             MainTitle: this.dumper.main_title,
             Year: this.dumper.year,

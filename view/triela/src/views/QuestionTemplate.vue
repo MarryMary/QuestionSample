@@ -77,7 +77,9 @@ export default {
     axios.post(
         'http://localhost:8080/FindQuestion',
         {
-          QId: this.$route.params.id
+          ExName: this.$route.params.ExName,
+          ExType: this.$route.params.ExType,
+          QName: this.$route.params.QName
         }
     ).then(
         function(response){

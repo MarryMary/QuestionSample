@@ -17,17 +17,17 @@ const routes = [
     component: () => import('../views/ExerciseDetail.vue')
   },
   {
-    path: '/detail/Q/:id',
+    path: '/detail/Q/:ExName/:ExType/:QName',
     name: 'QuestionDetail',
     component: () => import('../views/QDetail.vue')
   },
   {
-    path: '/preview/Q/:id',
+    path: '/preview/Q/:ExName/:ExType/:QName',
     name: 'QuestionPreview',
     component: () => import('../views/QuestionTemplate.vue')
   },
   {
-    path: '/manage/fix/:id',
+    path: '/manage/fix/Ex/:ExName/:ExType',
     name: 'ExerciseFix',
     component: () => import('../views/ExerciseFix')
   },
@@ -37,7 +37,7 @@ const routes = [
     component: () => import('../views/ExCreate.vue')
   },
   {
-    path: '/wizard/Question/:id',
+    path: '/wizard/Question/:ExName/:ExType',
     name: 'QuestionWizard',
     component: () => import('../views/QCreate.vue')
   },

@@ -37,6 +37,7 @@ export default {
     ).then(
         function(response){
           this.exercises = response.data.DATA
+          console.log(this.exercises)
         }.bind(this)
     ).catch(
         error => console.log(error)

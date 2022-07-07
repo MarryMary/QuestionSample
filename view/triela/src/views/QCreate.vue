@@ -340,14 +340,15 @@ export default {
       axios.post(
           'http://localhost:8080/PushQuestion',
           {
+            ExName: this.$route.params.ExName,
+            ExType: this.$route.params.ExType,
             MainTitle: this.dumper.main_title,
             Tag: this.dumper.tag,
             MainText: this.dumper.main_text,
             QType: this.dumper.qtype,
             Answer: this.dumper.answer,
             Choice: this.dumper.choice,
-            Score: this.dumper.score,
-            IncExId: this.$route.params.id
+            Score: this.dumper.score
           }
       ).then(
           function(response){
