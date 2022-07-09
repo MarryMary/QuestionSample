@@ -6,14 +6,16 @@ import (
 	"github.com/go-redis/redis/v9"
 )
 
-var ctx = context.Background()
-
-func RedisSample(Key string) map[interface{}]interface{} {
+func Read(Key string) map[interface{}]interface{} {
 	rdb := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
-		Password: "", // no password set
-		DB:       0,  // use default DB
+		Password: "",
+		DB:       0,
 	})
+
+	var ctx = context.Background()
+
+	Key = "PHPREDIS_SESSION:" + Key
 
 	PHP_SESSION, err := rdb.Get(ctx, Key).Result()
 	if err == redis.Nil {
@@ -29,5 +31,24 @@ func RedisSample(Key string) map[interface{}]interface{} {
 		}
 		return in
 
+	}
+}
+
+func Get(Key string, Purpose any) any {
+	if IsIn(Key, Purpose) {
+		SESSION := Read(Key)
+		return SESSION[Purpose]
+	} else {
+		return false
+	}
+}
+
+func IsIn(Key string, Purpose any) bool {
+	SESSION := Read(Key)
+
+	if _, ok := SESSION[Purpose]; ok {
+		return true
+	} else {
+		return false
 	}
 }

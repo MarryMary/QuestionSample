@@ -11,6 +11,7 @@ func GET_Routing(r *gin.Engine) *gin.Engine {
 	r.GET("/teapotangry", Service.TeapotAngry)
 	r.GET("/GetAllExercise", Service.PullExercise)
 	r.GET("/GetAllQuestion", Service.PullQuestion)
+	r.GET("/IsAuthMe", Service.IsAuthMe)
 
 	return r
 }
