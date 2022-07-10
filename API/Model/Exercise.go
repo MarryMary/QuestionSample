@@ -4,13 +4,24 @@ import (
 	"triela/Structs"
 )
 
-func Ex_Push(ExName string, ExYear string, ExSeason string, ExGenre string, ExTags string, ExTimeUp string) bool {
+func Ex_Push(ExName string, ExYear string, ExSeason string, ExGenre string, ExTags string, ExTimeUp string, Gr_OR_U string, UserId any) bool {
 	db := ConnectDB()
 	stmt, err := db.Prepare("INSERT INTO Exercise(ExName, ExType, ExYear, ExSeason, ExTags, ExTimeUp) VALUES (?, ?, ?, ?, ?, ?)")
 	if err != nil {
 		panic(err)
 	}
-	_, err = stmt.Exec(ExName, ExYear, ExSeason, ExGenre, ExTags, ExTimeUp)
+	_, err = stmt.Exec(ExName, ExGenre, ExYear, ExSeason, ExTags, ExTimeUp)
+
+	if err != nil {
+		panic(err)
+	}
+
+	stmt, err = db.Prepare("INSERT INTO Creator(ExName, ExType, UserId, Gr_OR_U) VALUES (?, ?, ?, ?)")
+	if err != nil {
+		panic(err)
+	}
+
+	_, err = stmt.Exec(ExName, ExGenre, UserId, Gr_OR_U)
 
 	if err != nil {
 		panic(err)

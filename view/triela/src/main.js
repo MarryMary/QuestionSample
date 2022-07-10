@@ -9,8 +9,26 @@ import VueMathjax from 'vue-mathjax-next'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import axios from "axios";
 
 library.add(fas, far, fab)
+
+axios.get(
+    'http://localhost:8080/IsAuthMe',
+).then(
+    function(response){
+        if(response.status === 200){
+            var data = response.data
+            if(data.AUTH_STATUS_NUMBER !== "1"){
+                location.href='http://localhost/AuthSample/Auth/login.php'
+            }
+        }else{
+            location.href='http://localhost/AuthSample/Auth/login.php'
+        }
+    }.bind(this)
+).catch(
+    error => console.log(error)
+)
 
 var app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)

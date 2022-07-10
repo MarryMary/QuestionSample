@@ -2,18 +2,29 @@ package Service
 
 import (
 	"github.com/gin-gonic/gin"
+	"triela/Cookie"
 	"triela/Model"
+	"triela/Session"
 	"triela/Structs"
 )
 
 func PullExercise(c *gin.Context) {
-	res := Model.Ex_GetAll()
-	json := gin.H{
-		"STATUS": "SUCCESS",
-		"DATA":   res,
-	}
+	if Session.IsIn(Cookie.Read(c), "IsAuth") && Session.Get(Cookie.Read(c), "IsAuth") == true {
+		res := Model.Ex_GetAll()
+		json := gin.H{
+			"STATUS": "SUCCESS",
+			"DATA":   res,
+		}
 
-	c.JSON(200, json)
+		c.JSON(200, json)
+	} else {
+		json := gin.H{
+			"STATUS":  "FAILED",
+			"MESSAGE": "You are not authorized yet.",
+		}
+
+		c.JSON(403, json)
+	}
 }
 
 func FindExercise(c *gin.Context) {

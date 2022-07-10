@@ -2,32 +2,45 @@ package Service
 
 import (
 	"github.com/gin-gonic/gin"
+	"triela/Cookie"
 	"triela/Model"
+	"triela/Session"
 	"triela/Structs"
 )
 
 func PushExercise(c *gin.Context) {
-	var PushRequest Structs.ExercisePushRequest
-	if err := c.ShouldBindJSON(&PushRequest); err != nil {
-		response := gin.H{
-			"STATUS":     "FAILED",
-			"ERRCODE":    "0001",
-			"MESSAGE":    "UNEXPECTED SERVER ERR",
-			"DEBUG_DATA": PushRequest,
+	if Session.IsIn(Cookie.Read(c), "IsAuth") && Session.Get(Cookie.Read(c), "IsAuth") == true {
+		var PushRequest Structs.ExercisePushRequest
+		Gr_OR_U := "0"
+
+		if err := c.ShouldBindJSON(&PushRequest); err != nil {
+			response := gin.H{
+				"STATUS":     "FAILED",
+				"ERRCODE":    "0001",
+				"MESSAGE":    "UNEXPECTED SERVER ERR",
+				"DEBUG_DATA": PushRequest,
+			}
+
+			c.JSON(500, response)
+			return
 		}
 
-		c.JSON(500, response)
-		return
+		Model.Ex_Push(PushRequest.MainTitle, PushRequest.Year, PushRequest.Season, PushRequest.Genre, PushRequest.Tag, PushRequest.Limit, Gr_OR_U, Session.Get(Cookie.Read(c), "UserId"))
+
+		response := gin.H{
+			"STATUS":  "SUCCESS",
+			"MESSAGE": "EXERCISE JSON DATA INSERT COMPLETED",
+		}
+
+		c.JSON(200, response)
+	} else {
+		json := gin.H{
+			"STATUS":  "FAILED",
+			"MESSAGE": "You are not authorized yet.",
+		}
+
+		c.JSON(403, json)
 	}
-
-	Model.Ex_Push(PushRequest.MainTitle, PushRequest.Year, PushRequest.Season, PushRequest.Genre, PushRequest.Tag, PushRequest.Limit)
-
-	response := gin.H{
-		"STATUS":  "SUCCESS",
-		"MESSAGE": "EXERCISE JSON DATA INSERT COMPLETED",
-	}
-
-	c.JSON(200, response)
 }
 
 func UpdateExercise(c *gin.Context) {
