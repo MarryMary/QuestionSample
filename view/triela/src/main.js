@@ -15,6 +15,9 @@ library.add(fas, far, fab)
 
 axios.get(
     'http://localhost:8080/IsAuthMe',
+    {
+        withCredentials: true
+    }
 ).then(
     function(response){
         if(response.status === 200){

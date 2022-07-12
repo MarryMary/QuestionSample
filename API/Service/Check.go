@@ -6,7 +6,11 @@ import (
 )
 
 func IsAuthMe(c *gin.Context) {
-	php_sess_id, _ := c.Cookie("PHPSESSID")
+	php_sess_id, err := c.Cookie("PHPSESSID")
+
+	if err != nil {
+		panic(err)
+	}
 
 	SESSION := Session.Read(php_sess_id)
 	if val, ok := SESSION["IsAuth"]; ok {

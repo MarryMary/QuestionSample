@@ -33,7 +33,10 @@ export default {
   },
   mounted: function(){
     axios.get(
-        "http://localhost:8080/GetAllExercise"
+        "http://localhost:8080/GetAllExercise",
+        {
+          withCredentials: true
+        }
     ).then(
         function(response){
           this.exercises = response.data.DATA

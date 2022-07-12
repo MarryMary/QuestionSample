@@ -349,6 +349,9 @@ export default {
             Answer: this.dumper.answer,
             Choice: this.dumper.choice,
             Score: this.dumper.score
+          },
+          {
+            withCredentials: true
           }
       ).then(
           function(response){

@@ -348,6 +348,9 @@ export default {
             Choice: this.dumper.choice,
             Score: this.dumper.score,
             IncExId: this.$route.params.id
+          },
+          {
+            withCredentials: true
           }
       ).then(
           function(response){

@@ -122,6 +122,9 @@ export default {
             Genre: this.dumper.Genre,
             Tag: this.dumper.tag,
             Limit: this.dumper.time_limit
+          },
+          {
+            withCredentials: true
           }
       ).then(
           function(response){

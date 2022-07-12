@@ -72,6 +72,9 @@ export default {
           ExName: this.$route.params.ExName,
           ExType: this.$route.params.ExType,
           QName: this.$route.params.QName
+        },
+        {
+          withCredentials: true
         }
     ).then(
         function(response){

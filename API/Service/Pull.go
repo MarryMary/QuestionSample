@@ -10,7 +10,7 @@ import (
 
 func PullExercise(c *gin.Context) {
 	if Session.IsIn(Cookie.Read(c), "IsAuth") && Session.Get(Cookie.Read(c), "IsAuth") == true {
-		res := Model.Ex_GetAll()
+		res := Model.Ex_GetAll(Session.Get(Cookie.Read(c), "UserId"), "0")
 		json := gin.H{
 			"STATUS": "SUCCESS",
 			"DATA":   res,

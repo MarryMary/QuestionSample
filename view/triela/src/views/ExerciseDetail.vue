@@ -62,6 +62,9 @@ export default {
         {
           ExName: this.$route.params.ExName,
           ExType: this.$route.params.ExType,
+        },
+        {
+          withCredentials: true
         }
     ).then(
         function(response){
@@ -80,6 +83,9 @@ export default {
 
     axios.get(
         'http://localhost:8080/GetAllQuestion',
+        {
+          withCredentials: true
+        }
     ).then(
         function(response){
           this.questions = response.data.DATA

@@ -102,6 +102,9 @@ export default {
             Detail: this.dumper.detail,
             Tag: this.dumper.tag,
             Limit: this.dumper.time_limit
+          },
+          {
+            withCredentials: true
           }
       ).then(
           function(response){
@@ -117,6 +120,9 @@ export default {
         'http://localhost:8080/FindExercise',
         {
           ExId: this.$route.params.id
+        },
+        {
+          withCredentials: true
         }
     ).then(
         function(response){
